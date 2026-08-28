@@ -140,12 +140,4 @@ Replace images in `public/assets/`, `public/gallery/`, and `public/our-projects/
 
 ## License
 
-© 2024 PT. Veritasindo Citra Abadi. All rights reserved.
-
-## Contact
-
-- **Website**: https://veritasindocitraabadi.co.id/
-- **Phone**: 0778-5515083
-- **WhatsApp**: +62 812-7528-236, +62 811-7570-898
-- **Email**: veritasindo_marketing@yahoo.com
-- **Location**: Ruko Nicco Residence Blok A2 No.06, Pasir Putih, Kota Batam
+© 2026 PT. Veritasindo Citra Abadi. All rights reserved.
