@@ -512,7 +512,7 @@ ${sanitizedMessage}`;
                     placeholder="+62 812 3456 7890"
                     inputMode="numeric"
                     autoComplete="tel"
-                    onInput={handlePhoneInput}
+                    onChange={handlePhoneInput}
                   />
                   {errors.phone && <span style={{ color: '#d32f2f', fontSize: '0.85rem', marginTop: '0.25rem', display: 'block' }}>{errors.phone}</span>}
                 </div>
