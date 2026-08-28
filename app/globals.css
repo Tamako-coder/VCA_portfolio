@@ -42,7 +42,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-h);
-  /* Support safe areas on iOS */
   height: -webkit-fill-available;
 }
 
@@ -50,7 +49,6 @@ body {
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--cream);
-  /* Ensure full viewport height on iOS Safari */
   min-height: 100vh;
   min-height: -webkit-fill-available;
   line-height: var(--line-height-base);
@@ -163,7 +161,6 @@ ul, ol {
   transform: translateY(-2px);
 }
 
-/* Outline button for light backgrounds (secondary action) */
 .btn-outline {
   background: transparent;
   color: var(--navy);
@@ -176,7 +173,6 @@ ul, ol {
   transform: translateY(-2px);
 }
 
-/* Button row: consistent spacing between adjacent buttons */
 .btn-row {
   display: flex;
   flex-wrap: wrap;
@@ -287,7 +283,6 @@ ul, ol {
   width: 100%;
 }
 
-/* WhatsApp button in header */
 .wa-btn {
   display: inline-flex;
   align-items: center;
@@ -309,7 +304,6 @@ ul, ol {
   box-shadow: 0 12px 26px rgba(37, 211, 102, 0.5);
 }
 
-/* Burger */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -560,8 +554,7 @@ ul, ol {
   max-height: 460px;
 }
 
-/* Services */
-/* Vision & Mission */
+/* Services & Vision */
 .vision {
   background: var(--cream);
 }
@@ -678,18 +671,23 @@ ul, ol {
   color: var(--navy);
 }
 
-/* ===== Infinite Carousel (inside projects section) ===== */
-.infinite-slider {
+/* ===== Infinite Carousel ===== */
+.carousel-wrapper {
   background: transparent;
   margin: 2rem 0;
   overflow: hidden;
   position: relative;
   width: 100%;
   padding: 2rem 0;
+  cursor: grab;
 }
 
-.infinite-slider::before,
-.infinite-slider::after {
+.carousel-wrapper:active {
+  cursor: grabbing;
+}
+
+.carousel-wrapper::before,
+.carousel-wrapper::after {
   content: "";
   height: 100%;
   position: absolute;
@@ -698,46 +696,47 @@ ul, ol {
   pointer-events: none;
 }
 
-.infinite-slider::before {
+.carousel-wrapper::before {
   left: 0;
   top: 0;
   background: linear-gradient(to right, rgba(238, 230, 213, 1) 0%, rgba(238, 230, 213, 0) 100%);
 }
 
-.infinite-slider::after {
+.carousel-wrapper::after {
   right: 0;
   top: 0;
   background: linear-gradient(to left, rgba(238, 230, 213, 1) 0%, rgba(238, 230, 213, 0) 100%);
 }
 
-@keyframes infinite-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.infinite-slide-track {
-  animation: infinite-scroll 25s linear infinite;
+.carousel-track-motion {
   display: flex;
-  gap: 1.5rem;
+  gap: 20px;
   width: max-content;
+  will-change: transform;
 }
 
-.infinite-slide {
+.carousel-item {
   flex-shrink: 0;
   height: auto;
-  border-radius: var(--radius);
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.infinite-slide:hover {
+.carousel-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 45px rgba(7, 31, 51, 0.2);
+}
+
+.carousel-image {
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  user-select: none;
+  pointer-events: none;
+  display: block;
 }
 
 .infinite-slide img {
@@ -747,6 +746,7 @@ ul, ol {
   display: block;
 }
 
+/* Gallery */
 .gallery {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -773,18 +773,6 @@ ul, ol {
   transform: scale(1.05);
 }
 
-/* 2-image layout (portrait-friendly, e.g. homepage Dokumentasi) */
-.gallery-2 {
-  grid-template-columns: repeat(2, 1fr);
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.gallery-2 .gallery-item {
-  aspect-ratio: 3 / 4;
-}
-
-/* 3-column layout (e.g. gallery page) */
 .gallery-4 {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -794,106 +782,6 @@ ul, ol {
 }
 
 /* Contact */
-.contact {
-  background: linear-gradient(135deg, var(--navy-dark), var(--navy));
-  color: var(--white);
-}
-
-/* ===== Infinite Carousel ===== */
-.infinite-carousel-section {
-  background: var(--cream);
-  overflow: hidden;
-}
-
-.infinite-slider {
-  background: var(--white);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  margin: 2rem auto;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  padding: 2rem 0;
-}
-
-.infinite-slider::before,
-.infinite-slider::after {
-  content: "";
-  height: 100%;
-  position: absolute;
-  width: 200px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.infinite-slider::before {
-  left: 0;
-  top: 0;
-  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-}
-
-.infinite-slider::after {
-  right: 0;
-  top: 0;
-  background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-}
-
-@keyframes infinite-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.infinite-slide-track {
-  animation: infinite-scroll 40s linear infinite;
-  display: flex;
-  gap: 1.5rem;
-  width: max-content;
-}
-
-.infinite-slide {
-  flex-shrink: 0;
-  height: auto;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.infinite-slide img {
-  height: 350px;
-  width: auto;
-  object-fit: cover;
-  display: block;
-}
-
-@media (max-width: 960px) {
-  .infinite-slide img {
-    height: 280px;
-  }
-
-  .infinite-slider::before,
-  .infinite-slider::after {
-    width: 100px;
-  }
-}
-
-@media (max-width: 620px) {
-  .infinite-slide img {
-    height: 220px;
-  }
-
-  .infinite-slider::before,
-  .infinite-slider::after {
-    width: 50px;
-  }
-
-  .infinite-slide-track {
-    gap: 1rem;
-  }
-}
-
 .contact {
   background: linear-gradient(135deg, var(--navy-dark), var(--navy));
   color: var(--white);
@@ -976,12 +864,13 @@ ul, ol {
 }
 
 .footer-logo {
-  height: 64px;
-  width: auto;
+  width: 302px !important;
+  height: 66px !important;
   margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.95);
-  padding: 8px 14px;
+  padding: 0px 6px;
   border-radius: 8px;
+  object-fit: contain;
 }
 
 .footer-brand p {
@@ -1062,23 +951,6 @@ ul, ol {
   text-align: center;
 }
 
-/* ===== Reveal animation ===== */
-.section,
-.values {
-  opacity: 1;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-
 /* ===== Responsive ===== */
 @media (max-width: 960px) {
   .about-grid,
@@ -1100,10 +972,6 @@ ul, ol {
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-links {
-    order: -1;
   }
 }
 
@@ -1177,69 +1045,6 @@ ul, ol {
     grid-template-columns: 1fr;
   }
 
-  /* Portfolio carousel slider for mobile */
-  .portfolio-carousel-wrapper {
-    max-width: 100%;
-    margin: 0 auto;
-  }
-
-  .portfolio-swiper {
-    width: 100%;
-    padding-bottom: 3rem;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-  }
-
-  .portfolio-swiper .swiper-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .portfolio-swiper .swiper-slide img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-  }
-
-  /* Navigation arrows */
-  .portfolio-swiper .swiper-button-prev,
-  .portfolio-swiper .swiper-button-next {
-    color: var(--gold);
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    box-shadow: var(--shadow-sm);
-  }
-
-  .portfolio-swiper .swiper-button-prev:after,
-  .portfolio-swiper .swiper-button-next:after {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  /* Pagination dots */
-  .portfolio-swiper .swiper-pagination {
-    bottom: 0;
-  }
-
-  .portfolio-swiper .swiper-pagination-bullet {
-    background: var(--gold);
-    opacity: 0.4;
-    width: 10px;
-    height: 10px;
-    margin: 0 4px;
-  }
-
-  .portfolio-swiper .swiper-pagination-bullet-active {
-    opacity: 1;
-    background: var(--gold);
-  }
-
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 1.8rem;
@@ -1251,19 +1056,5 @@ ul, ol {
 
   .hero-stats {
     gap: 1.6rem;
-  }
-}
-
-/* Hide carousel on desktop, show original gallery */
-@media (min-width: 768px) {
-  .portfolio-carousel-wrapper {
-    display: none;
-  }
-}
-
-/* Show carousel only on mobile */
-@media (max-width: 767px) {
-  .gallery-2 {
-    display: none;
   }
 }
