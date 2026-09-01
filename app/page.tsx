@@ -10,6 +10,18 @@ import ClientCarousel from '@/components/ClientCarousel';
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  const handleVCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // On mobile, open directly; on desktop, download
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      e.preventDefault();
+      // For mobile, navigate directly to the vCard file without download attribute
+      window.location.href = '/contact.vcf';
+    }
+    // On desktop, let the default download behavior happen
+  };
+
   useEffect(() => {
     const heroVideo = videoRef.current;
     if (!heroVideo) return;
@@ -209,7 +221,14 @@ export default function Home() {
             </p>
             <div className="btn-row">
               <Link className="btn btn-gold" href="/contact-2">Halaman Kontak</Link>
-              <a className="btn btn-gold" href="/contact.vcf" download>Simpan ke Kontak</a>
+              <a
+                className="btn btn-gold"
+                href="/contact.vcf"
+                download="PT-Veritasindo-Citra-Abadi.vcf"
+                onClick={handleVCardClick}
+              >
+                Simpan ke Kontak
+              </a>
             </div>
           </div>
           <ul className="contact-list">

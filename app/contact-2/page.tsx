@@ -48,6 +48,18 @@ export default function Contact() {
     input.value = input.value.replace(/[^0-9+\-\s]/g, '');
   };
 
+  const handleVCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // On mobile, open directly; on desktop, download
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      e.preventDefault();
+      // For mobile, navigate directly to the vCard file without download attribute
+      window.location.href = '/contact.vcf';
+    }
+    // On desktop, let the default download behavior happen
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -583,7 +595,12 @@ ${sanitizedMessage}`;
                   </svg>
                   Chat WhatsApp
                 </a>
-                <a href="/contact.vcf" download="PT-Veritasindo-Citra-Abadi.vcf" className="quick-btn quick-btn-phone">
+                <a
+                  href="/contact.vcf"
+                  download="PT-Veritasindo-Citra-Abadi.vcf"
+                  onClick={handleVCardClick}
+                  className="quick-btn quick-btn-phone"
+                >
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                     <path d="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2z"/>
                   </svg>
