@@ -1,18 +1,26 @@
 'use client';
 
 import { motion, useMotionValue, useAnimationFrame } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { getCarouselImages } from '@/data/work';
+
+const images = [
+  { num: 1, width: 400, height: 300 },
+  { num: 2, width: 400, height: 300 },
+  { num: 3, width: 400, height: 300 },
+  { num: 4, width: 400, height: 300 },
+  { num: 5, width: 400, height: 300 },
+  { num: 6, width: 400, height: 300 },
+  { num: 7, width: 400, height: 300 },
+  { num: 8, width: 400, height: 300 },
+  { num: 9, width: 400, height: 300 },
+];
 
 const GAP = 20;
 
 export default function ProjectCarousel() {
   const baseX = useMotionValue(0);
   const [isDragging, setIsDragging] = useState(false);
-
-  // Get carousel images from centralized data
-  const images = getCarouselImages();
 
   // Calculate width for one complete set
   const ITEM_WIDTH = 300 * (4 / 3) + GAP; // Approximate width based on aspect ratio
@@ -61,14 +69,14 @@ export default function ProjectCarousel() {
         {/* Render 5 sets for buffer during infinite scroll */}
         {[...images, ...images, ...images, ...images, ...images].map((image, idx) => (
           <div
-            key={`${image.id}-${idx}`}
+            key={idx}
             className="carousel-item"
           >
             <Image
-              src={image.src}
-              alt={image.alt}
-              width={image.width || 400}
-              height={image.height || 300}
+              src={`/assets/carousel_${image.num}.jpg`}
+              alt={`Instalasi panel elektrikal ${image.num}`}
+              width={image.width}
+              height={image.height}
               className="carousel-image"
               draggable={false}
             />

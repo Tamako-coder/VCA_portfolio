@@ -1,23 +1,39 @@
+'use client';
+
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Galeri | PT. Veritasindo Citra Abadi",
-  description: "Galeri dokumentasi pekerjaan PT. Veritasindo Citra Abadi — pemasangan trafo, instalasi cubicle LV & MV, dan proyek elektrikal di Batam.",
-};
-
-const galleryItems = [
-  { id: 1, name: "gallery_1.webp", alt: "Dokumentasi proyek elektrikal 1" },
-  { id: 2, name: "gallery_2.webp", alt: "Dokumentasi proyek elektrikal 2" },
-  { id: 3, name: "gallery_3.webp", alt: "Dokumentasi proyek elektrikal 3" },
-  { id: 4, name: "gallery_4.webp", alt: "Dokumentasi proyek elektrikal 4" },
-  { id: 5, name: "gallery_5.webp", alt: "Dokumentasi proyek elektrikal 5" },
-  { id: 6, name: "gallery_6.webp", alt: "Dokumentasi proyek elektrikal 6" },
-  { id: 7, name: "Proses-pemasangan-trafo-baru-Foto-Humas-1024x768.webp", alt: "Proses pemasangan trafo" },
-];
+import { useState } from "react";
+import { workImages, getImagesByTag, type WorkTag } from "@/data/work";
+import GalleryFilters from "@/components/work/GalleryFilters";
+import GalleryGrid from "@/components/work/GalleryGrid";
+import ImageLightbox from "@/components/work/ImageLightbox";
 
 export default function Gallery() {
+  const [activeTag, setActiveTag] = useState<WorkTag | "all">("all");
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const filteredImages =
+    activeTag === "all" ? workImages : getImagesByTag(activeTag);
+
+  const handleImageClick = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const handleCloseLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const handleNextImage = () => {
+    setLightboxIndex((prev) =>
+      prev < filteredImages.length - 1 ? prev + 1 : prev
+    );
+  };
+
+  const handlePrevImage = () => {
+    setLightboxIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
   return (
     <>
       <section className="page-hero">
@@ -31,23 +47,26 @@ export default function Gallery() {
         </div>
       </section>
 
-      <section className="section projects">
+      <section className="section gallery-section">
         <div className="container">
-          <div className="gallery gallery-4">
-            {galleryItems.map((item) => (
-              <figure className="gallery-item" key={item.id}>
-                <Image
-                  src={`/gallery/${item.name}`}
-                  alt={item.alt}
-                  width={500}
-                  height={375}
-                  loading="lazy"
-                />
-              </figure>
-            ))}
-          </div>
+          <GalleryFilters
+            activeTag={activeTag}
+            onFilterChange={setActiveTag}
+            imageCount={filteredImages.length}
+          />
+          <GalleryGrid images={filteredImages} onImageClick={handleImageClick} />
         </div>
       </section>
+
+      {lightboxOpen && (
+        <ImageLightbox
+          images={filteredImages}
+          currentIndex={lightboxIndex}
+          onClose={handleCloseLightbox}
+          onNext={handleNextImage}
+          onPrev={handlePrevImage}
+        />
+      )}
     </>
   );
 }
