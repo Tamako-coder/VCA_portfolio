@@ -143,7 +143,7 @@ export default function Home() {
             <article className="card">
               <div className="card-media">
                 <Image
-                  src="/assets/portfolio_1.webp"
+                  src="/work/IMAGE_VCA_00012.jpg"
                   alt="Jasa kontraktor elektrikal"
                   width={400}
                   height={300}
@@ -186,9 +186,6 @@ export default function Home() {
               </div>
             </article>
           </div>
-          <p style={{ marginTop: '2rem' }}>
-            <Link className="btn btn-gold" href="/our-service">Lihat Semua Layanan</Link>
-          </p>
         </div>
       </section>
 

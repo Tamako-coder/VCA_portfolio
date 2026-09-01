@@ -148,15 +148,6 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="/our-service"
-                className={`nav-link ${isActive('/our-service') ? 'active' : ''}`}
-                onClick={(e) => handleNavClick(e, '/our-service')}
-              >
-                Our Services
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/our-projects"
                 className={`nav-link ${isActive('/our-projects') ? 'active' : ''}`}
                 onClick={(e) => handleNavClick(e, '/our-projects')}
