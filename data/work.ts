@@ -355,7 +355,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-020",
-    src: "/work/IMAGE_VCA_00020.jpg",
+    src: "/work/IMAGE_VCA_00020.png",
     alt: "Transformer besar yang diposisikan di dalam ruang elektrikal khusus",
     caption: "Transformer di Ruang Elektrikal",
     tags: ["equipment", "installation"],
