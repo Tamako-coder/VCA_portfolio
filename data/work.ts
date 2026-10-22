@@ -64,6 +64,7 @@ export type Project = {
   title: string;
   category: string;
   summary?: string;
+  description?: string[];
   location?: string;
   completionDate?: string;
   scope?: string[];
@@ -158,7 +159,7 @@ const originalCarouselImages: WorkImage[] = [
   },
   {
     id: "carousel-009",
-    src: "/assets/carousel_9.jpg",
+    src: "/assets/carousel_9.webp",
     alt: "Instalasi panel elektrikal proyek 9",
     caption: "Instalasi Panel Elektrikal",
     tags: ["electrical", "installation"],
@@ -172,7 +173,7 @@ const originalCarouselImages: WorkImage[] = [
 const newWorkImages: WorkImage[] = [
   {
     id: "work-001",
-    src: "/work/IMAGE_VCA_00001.jpg",
+    src: "/work/IMAGE_VCA_00001.webp",
     alt: "Deretan panel switchgear Schneider yang telah selesai dipasang dan beroperasi di ruang elektrikal",
     caption: "Panel Switchgear Schneider",
     tags: ["electrical", "equipment", "installation"],
@@ -182,7 +183,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-002",
-    src: "/work/IMAGE_VCA_00002.jpg",
+    src: "/work/IMAGE_VCA_00002.webp",
     alt: "Transformer besar yang diposisikan di dalam ruangan khusus selama proses instalasi",
     caption: "Instalasi Transformer",
     tags: ["equipment", "installation"],
@@ -192,28 +193,28 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-003",
-    src: "/work/IMAGE_VCA_00003.jpg",
+    src: "/work/IMAGE_VCA_00003.webp",
     alt: "Teknisi sedang melakukan instalasi dan perataan panel distribusi elektrikal",
     caption: "Instalasi Panel Distribusi",
     tags: ["electrical", "installation", "equipment"],
-    projectId: "project-001",
+    projectId: "project-003",
     width: 1600,
     height: 1200,
     carousel: true,
   },
   {
     id: "work-004",
-    src: "/work/IMAGE_VCA_00004.jpg",
+    src: "/work/IMAGE_VCA_00004.webp",
     alt: "Teknisi bekerja pada panel switchboard yang baru diposisikan selama instalasi",
     caption: "Pemasangan Panel Switchboard",
     tags: ["electrical", "installation", "equipment"],
-    projectId: "project-001",
+    projectId: "project-003",
     width: 1600,
     height: 1200,
   },
   {
     id: "work-005",
-    src: "/work/IMAGE_VCA_00005.jpg",
+    src: "/work/IMAGE_VCA_00005.webp",
     alt: "Close-up teknisi mengamankan panel elektrikal pada tempatnya",
     caption: "Pengamanan Panel Elektrikal",
     tags: ["electrical", "installation"],
@@ -222,7 +223,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-006",
-    src: "/work/IMAGE_VCA_00006.jpg",
+    src: "/work/IMAGE_VCA_00006.webp",
     alt: "Teknisi bekerja pada kabel elektrikal yang terbuka di lokasi konstruksi",
     caption: "Pekerjaan Kabel Elektrikal",
     tags: ["electrical", "installation", "construction"],
@@ -232,7 +233,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-007",
-    src: "/work/IMAGE_VCA_00007.jpg",
+    src: "/work/IMAGE_VCA_00007.webp",
     alt: "Panel elektrikal dan penopang kabel overhead selama instalasi berlangsung",
     caption: "Instalasi Panel dan Kabel Overhead",
     tags: ["electrical", "installation", "construction"],
@@ -241,17 +242,17 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-008",
-    src: "/work/IMAGE_VCA_00008.jpg",
+    src: "/work/IMAGE_VCA_00008.webp",
     alt: "Deretan panel distribusi elektrikal yang baru selesai dipasang",
     caption: "Panel Distribusi Elektrikal",
     tags: ["electrical", "equipment", "installation"],
-    projectId: "project-001",
+    projectId: "project-003",
     width: 1600,
     height: 1200,
   },
   {
     id: "work-009",
-    src: "/work/IMAGE_VCA_00009.jpg",
+    src: "/work/IMAGE_VCA_00009.webp",
     alt: "Teknisi memasang conduit elektrikal permukaan dan titik-titik kabel",
     caption: "Instalasi Conduit dan Kabel",
     tags: ["electrical", "installation", "construction"],
@@ -260,7 +261,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-010",
-    src: "/work/IMAGE_VCA_00010.jpg",
+    src: "/work/IMAGE_VCA_00010.webp",
     alt: "Teknisi menarik dan menyambungkan kabel elektrikal melalui conduit plafon",
     caption: "Penarikan Kabel Plafon",
     tags: ["electrical", "installation", "construction"],
@@ -269,7 +270,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-011",
-    src: "/work/IMAGE_VCA_00011.jpg",
+    src: "/work/IMAGE_VCA_00011.webp",
     alt: "Teknisi memasang conduit elektrikal overhead di dalam bangunan yang sedang dibangun",
     caption: "Instalasi Conduit Overhead",
     tags: ["electrical", "installation", "construction"],
@@ -279,7 +280,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-012",
-    src: "/work/IMAGE_VCA_00012.jpg",
+    src: "/work/IMAGE_VCA_00012.webp",
     alt: "Teknisi memotong dan memasang penopang metal overhead selama pekerjaan renovasi",
     caption: "Pemasangan Penopang Metal",
     tags: ["construction", "installation"],
@@ -288,7 +289,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-013",
-    src: "/work/IMAGE_VCA_00013.jpg",
+    src: "/work/IMAGE_VCA_00013.webp",
     alt: "Dua teknisi merakit cable tray metal berbentuk lengkung",
     caption: "Perakitan Cable Tray",
     tags: ["construction", "installation", "equipment"],
@@ -298,7 +299,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-014",
-    src: "/work/IMAGE_VCA_00014.jpg",
+    src: "/work/IMAGE_VCA_00014.webp",
     alt: "Teknisi mengencangkan bagian-bagian cable tray metal",
     caption: "Pemasangan Cable Tray Metal",
     tags: ["construction", "installation", "equipment"],
@@ -307,7 +308,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-015",
-    src: "/work/IMAGE_VCA_00015.jpg",
+    src: "/work/IMAGE_VCA_00015.webp",
     alt: "Teknisi memasang layanan elektrikal overhead dan penopang kabel",
     caption: "Instalasi Elektrikal Overhead",
     tags: ["electrical", "installation", "construction"],
@@ -316,7 +317,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-016",
-    src: "/work/IMAGE_VCA_00016.jpg",
+    src: "/work/IMAGE_VCA_00016.webp",
     alt: "Teknisi menyambungkan kabel elektrikal di titik sambungan plafon",
     caption: "Penyambungan Kabel Plafon",
     tags: ["electrical", "installation"],
@@ -326,7 +327,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-017",
-    src: "/work/IMAGE_VCA_00017.jpg",
+    src: "/work/IMAGE_VCA_00017.webp",
     alt: "Teknisi memasang cable tray metal melalui area utilitas outdoor",
     caption: "Instalasi Cable Tray Outdoor",
     tags: ["construction", "installation", "equipment"],
@@ -335,7 +336,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-018",
-    src: "/work/IMAGE_VCA_00018.jpg",
+    src: "/work/IMAGE_VCA_00018.webp",
     alt: "Teknisi bekerja di samping panel kontrol elektrikal industri",
     caption: "Panel Kontrol Industri",
     tags: ["electrical", "equipment", "installation"],
@@ -345,7 +346,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-019",
-    src: "/work/IMAGE_VCA_00019.jpg",
+    src: "/work/IMAGE_VCA_00019.webp",
     alt: "Tim teknisi memposisikan transformer besar di dalam ruang elektrikal",
     caption: "Pemasangan Transformer",
     tags: ["equipment", "installation"],
@@ -355,7 +356,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-020",
-    src: "/work/IMAGE_VCA_00020.png",
+    src: "/work/IMAGE_VCA_00020.webp",
     alt: "Transformer besar yang diposisikan di dalam ruang elektrikal khusus",
     caption: "Transformer di Ruang Elektrikal",
     tags: ["equipment", "installation"],
@@ -366,7 +367,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-021",
-    src: "/work/IMAGE_VCA_00021.jpg",
+    src: "/work/IMAGE_VCA_00021.webp",
     alt: "Teknisi melakukan pekerjaan elektrikal overhead di dalam ruangan yang telah didekorasi",
     caption: "Pekerjaan Elektrikal Overhead",
     tags: ["electrical", "installation"],
@@ -375,7 +376,7 @@ const newWorkImages: WorkImage[] = [
   },
   {
     id: "work-022",
-    src: "/work/IMAGE_VCA_00022.jpg",
+    src: "/work/IMAGE_VCA_00022.webp",
     alt: "Teknisi memasang lampu plafon berbentuk lingkaran",
     caption: "Instalasi Lampu Plafon",
     tags: ["electrical", "installation"],
@@ -395,6 +396,10 @@ export const projects: Project[] = [
     title: "Instalasi Panel Switchgear Schneider",
     category: "Instalasi Elektrikal",
     summary: "Pemasangan dan instalasi panel switchgear Schneider untuk fasilitas industri dengan kapasitas tinggi.",
+    description: [
+      "Proyek ini mencakup pemasangan panel switchgear Schneider dan panel distribusi elektrikal untuk fasilitas industri di Batam. Panel ditempatkan berjajar di ruang elektrikal dan menjadi titik pembagian daya bagi beban di fasilitas tersebut.",
+      "Tim kami menangani pekerjaan dari penempatan, perataan, dan pengamanan panel, hingga pengujian (testing) dan commissioning sebelum sistem dioperasikan. Dokumentasi di bawah menunjukkan tahapan kerja di lapangan dan hasil pemasangan.",
+    ],
     location: "Batam, Kepulauan Riau",
     completionDate: "2024",
     scope: [
@@ -405,7 +410,7 @@ export const projects: Project[] = [
     ],
     tags: ["electrical", "installation", "equipment"],
     coverImageId: "work-001",
-    imageIds: ["work-001", "work-003", "work-004", "work-005", "work-008"],
+    imageIds: ["work-001", "carousel-006", "carousel-007", "carousel-008"],
     featured: true,
   },
   {
@@ -414,6 +419,10 @@ export const projects: Project[] = [
     title: "Instalasi Transformer Industri",
     category: "Transformer Installation",
     summary: "Pemasangan transformer besar untuk kebutuhan tenaga listrik industri di ruangan khusus.",
+    description: [
+      "Proyek ini adalah pemasangan transformer berukuran besar di ruang elektrikal khusus untuk kebutuhan tenaga listrik industri di Batam. Pekerjaan diawali dengan survei dan persiapan lokasi agar transformer dapat diposisikan dengan aman.",
+      "Setelah transformer terpasang pada posisinya, tim kami melanjutkan dengan instalasi sistem grounding serta testing dan commissioning. Foto-foto di bawah mendokumentasikan proses penempatan transformer di dalam ruangan.",
+    ],
     location: "Batam, Kepulauan Riau",
     completionDate: "2024",
     scope: [
@@ -433,6 +442,10 @@ export const projects: Project[] = [
     title: "Instalasi Panel Kontrol Industri",
     category: "Panel Kontrol",
     summary: "Instalasi panel kontrol elektrikal untuk sistem industri dengan standar keamanan tinggi.",
+    description: [
+      "Proyek ini meliputi instalasi panel kontrol elektrikal untuk sistem industri di Batam, termasuk pemasangan sistem proteksi serta wiring dan koneksi antar-komponen.",
+      "Setelah instalasi, panel melalui testing dan kalibrasi agar berfungsi sesuai kebutuhan sistem. Pekerjaan dilakukan oleh teknisi kami dengan mengutamakan keselamatan kerja dan ketepatan pemasangan.",
+    ],
     location: "Batam, Kepulauan Riau",
     completionDate: "2024",
     scope: [
@@ -443,7 +456,7 @@ export const projects: Project[] = [
     ],
     tags: ["electrical", "equipment", "installation"],
     coverImageId: "work-018",
-    imageIds: ["work-018"],
+    imageIds: ["work-018", "work-003", "work-004", "work-005", "work-008", "carousel-001", "carousel-004", "carousel-005"],
     featured: true,
   },
 ];

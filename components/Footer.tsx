@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="container footer-grid">
         <div className="footer-brand">
           <Image
-            src="/assets/Transparent_Main_Logo_Black-Color.png"
+            src="/assets/footer_logo.webp"
             alt="PT. Veritasindo Citra Abadi"
             className="footer-logo"
             width={288}

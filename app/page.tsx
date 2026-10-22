@@ -2,25 +2,15 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import ProjectCarousel from '@/components/ProjectCarousel';
 import SummaryStats from '@/components/SummaryStats';
 import ClientCarousel from '@/components/ClientCarousel';
+import { createVCardHandler } from '@/lib/vcard';
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleVCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    // On mobile, open directly; on desktop, download
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-    if (isMobile) {
-      e.preventDefault();
-      // For mobile, navigate directly to the vCard file without download attribute
-      window.location.href = '/contact.vcf';
-    }
-    // On desktop, let the default download behavior happen
-  };
+  const handleVCardClick = useMemo(() => createVCardHandler(), []);
 
   useEffect(() => {
     const heroVideo = videoRef.current;
@@ -55,7 +45,7 @@ export default function Home() {
     <>
       <section className="hero">
         <div className="hero-video">
-          <video ref={videoRef} autoPlay muted loop playsInline preload="auto" aria-hidden="true">
+          <video ref={videoRef} autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
             <source src="/assets/hero-bg.mp4" type="video/mp4" />
           </video>
         </div>
@@ -143,7 +133,7 @@ export default function Home() {
             <article className="card">
               <div className="card-media">
                 <Image
-                  src="/work/IMAGE_VCA_00012.jpg"
+                  src="/work/IMAGE_VCA_00012.webp"
                   alt="Jasa kontraktor elektrikal"
                   width={400}
                   height={300}

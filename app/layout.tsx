@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { Archivo, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+const archivo = Archivo({ subsets: ["latin"], weight: ["600", "700"], display: "swap", variable: "--font-archivo" });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600"], display: "swap", variable: "--font-poppins" });
 
 export const metadata: Metadata = {
   title: "Jasa Pemasangan Trafo & Kontraktor Elektrikal Batam | PT. Veritasindo Citra Abadi",
@@ -36,11 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id">
+    <html lang="id" className={`${archivo.variable} ${poppins.variable}`}>
       <head>
         <link rel="icon" type="image/webp" href="/assets/favicon.webp" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>
         <a href="#main-content" className="skip-link">

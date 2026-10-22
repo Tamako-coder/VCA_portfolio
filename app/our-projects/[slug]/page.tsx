@@ -11,7 +11,7 @@ import {
 import TagBadge from "@/components/work/TagBadge";
 
 type ProjectDetailPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
@@ -24,7 +24,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: ProjectDetailPageProps): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug);
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     return {
@@ -38,8 +39,9 @@ export async function generateMetadata({
   };
 }
 
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     notFound();
@@ -91,30 +93,43 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
             )}
           </div>
 
-          {coverImage && (
-            <div className="project-detail-cover">
-              <Image
-                src={coverImage.src}
-                alt={coverImage.alt}
-                width={coverImage.width || 1200}
-                height={coverImage.height || 800}
-                sizes="(max-width: 1200px) 92vw, 1180px"
-                className="project-detail-cover-img"
-                priority
-              />
-            </div>
-          )}
+          <div className="project-detail-top">
+            {coverImage && (
+              <div className="project-detail-cover">
+                <Image
+                  src={coverImage.src}
+                  alt={coverImage.alt}
+                  width={coverImage.width || 1200}
+                  height={coverImage.height || 800}
+                  sizes="(max-width: 900px) 92vw, 560px"
+                  className="project-detail-cover-img"
+                  priority
+                />
+              </div>
+            )}
 
-          {project.scope && project.scope.length > 0 && (
-            <div className="project-detail-scope">
-              <h2>Lingkup Pekerjaan</h2>
-              <ul className="project-scope-list">
-                {project.scope.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
+            <div className="project-detail-info">
+              {project.description && project.description.length > 0 && (
+                <div className="project-detail-scope">
+                  <h2>Tentang Proyek</h2>
+                  {project.description.map((paragraph, index) => (
+                    <p key={index} className="project-detail-text">{paragraph}</p>
+                  ))}
+                </div>
+              )}
+
+              {project.scope && project.scope.length > 0 && (
+                <div className="project-detail-scope">
+                  <h2>Lingkup Pekerjaan</h2>
+                  <ul className="project-scope-list">
+                    {project.scope.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
-          )}
+          </div>
 
           {projectImages.length > 1 && (
             <div className="project-detail-gallery">

@@ -53,7 +53,7 @@ export default function NotFound() {
           {/* Construction Workers Illustration */}
           <div className="not-found-image">
             <Image
-              src="/404-workers.png"
+              src="/404-workers.webp"
               alt="Construction workers repairing electrical systems"
               width={700}
               height={467}

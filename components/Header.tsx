@@ -109,7 +109,7 @@ export default function Header() {
       <nav className="nav container">
         <Link className="brand" href="/" aria-label="PT. Veritasindo Citra Abadi — Home">
           <Image
-            src="/assets/main_logo.png"
+            src="/assets/main_logo.webp"
             alt="Logo PT. Veritasindo Citra Abadi"
             className="brand-logo"
             width={60}
